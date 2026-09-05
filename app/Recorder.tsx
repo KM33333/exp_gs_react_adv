@@ -46,8 +46,10 @@ export default function Recorder({ onText }: { onText: (t: string) => void }) {
   }
 
   return (
-    <button onClick={recording ? stopRec : startRec}>
-      {recording ? "■ 録音停止して文字にする" : "🎤 録音する"}
-    </button>
+    <div className="flex justify-end">
+      <button onClick={recording ? stopRec : startRec} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        {recording ? "■ 録音停止して文字にする" : "🎤 録音する"}
+      </button>
+    </div>
   );
 }
