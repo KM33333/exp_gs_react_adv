@@ -1,4 +1,5 @@
-  import { pgTable, serial, text, integer, timestamp } from "drizzle-orm/pg-core";
+// 設計図 カラムを追加するときなどに使う。
+import { pgTable, serial, text, integer, timestamp } from "drizzle-orm/pg-core";
   
   export const sessions = pgTable("sessions", {    
     id: serial("id").primaryKey(),              // 通し番号（主キー・自動）
@@ -8,4 +9,5 @@
     smileScore: integer("smile_score"),         // 笑顔スコア
     feedback: text("feedback"),                 // AIのフィードバック
     createdAt: timestamp("created_at").defaultNow().notNull(), // 作成日時
+    memo: text("memo"),// 任意のメモ
   });

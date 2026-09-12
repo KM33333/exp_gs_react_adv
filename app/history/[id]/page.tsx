@@ -1,8 +1,11 @@
 // app/history/[id]/page.tsx
 import { db } from "@/db";
 import { sessions } from "@/db/schema";
+// eqは、**「データベースの表の中にあるid列の値」と、「URLから取り出したid(数値に変換したもの)」**が等しいかどうかを見ています。
+// drizzle-ormは、TypeScript(JavaScript)のコードから、データベース(PostgreSQLなど)を簡単に操作できるようにしてくれる「ライブラリ(部品集)」の名前
 import { eq } from "drizzle-orm";
 
+// _request→リクエストの情報(メソッド、URL全体、ヘッダー、本文など)、params→ID
 export default async function HistoryDetail({
   params,
 }: {

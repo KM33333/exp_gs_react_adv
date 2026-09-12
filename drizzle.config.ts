@@ -1,4 +1,4 @@
-// drizzle.config.ts
+// drizzle.config.ts 最初に設定したら、基本は利用しない。
 import { config } from "dotenv";
 import { defineConfig } from "drizzle-kit";
 
