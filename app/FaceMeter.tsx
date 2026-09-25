@@ -3,9 +3,33 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function FaceMeter({ onScore }: { onScore: (n: number) => void }) {
+type FaceMeterProps = {
+  onHappy?: (n: number) => void;
+  onSad?: (n: number) => void;
+  onAngry?: (n: number) => void;
+  onSurprised?: (n: number) => void;
+  onNeutral?: (n: number) => void;
+  onFearful?: (n: number) => void;
+  onDisgusted?: (n: number) => void;
+};
+
+export default function FaceMeter({
+  onHappy,
+  onSad,
+  onAngry,
+  onSurprised,
+  onNeutral,
+  onFearful,
+  onDisgusted,
+}: FaceMeterProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [smile, setSmile] = useState(0);
+  const [sad, setSad] = useState(0);
+  const [angry, setAngry] = useState(0);
+  const [surprised, setSurprised] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [fearful, setFearful] = useState(0);
+  const [disgusted, setDisgusted] = useState(0);
 
   useEffect(() => {
     let timer: ReturnType<typeof setInterval>;
@@ -48,8 +72,29 @@ export default function FaceMeter({ onScore }: { onScore: (n: number) => void })
           .withFaceExpressions();
         if (result) {
           const happy = Math.round(result.expressions.happy * 100);
+          const sad = Math.round(result.expressions.sad * 100);
+          const angry = Math.round(result.expressions.angry * 100);
+          const surprised = Math.round(result.expressions.surprised * 100);
+          const neutral = Math.round(result.expressions.neutral * 100);
+          const fearful = Math.round(result.expressions.fearful * 100);
+          const disgusted = Math.round(result.expressions.disgusted * 100);
+
           setSmile(happy);
-          onScore(happy); // 親(page.tsx)にも笑顔率を渡す
+          setSad(sad);
+          setAngry(angry);
+          setSurprised(surprised);
+          setNeutral(neutral);
+          setFearful(fearful);
+          setDisgusted(disgusted);
+
+          // ★渡されているものだけ呼ぶ（?. = オプショナルチェイニング）
+          onHappy?.(happy);
+          onSad?.(sad);
+          onAngry?.(angry);
+          onSurprised?.(surprised);
+          onNeutral?.(neutral);
+          onFearful?.(fearful);
+          onDisgusted?.(disgusted);
         }
       }, 500);
     }
@@ -61,13 +106,19 @@ export default function FaceMeter({ onScore }: { onScore: (n: number) => void })
       clearInterval(timer);
       stream?.getTracks().forEach((t) => t.stop()); // ★カメラを止める（ランプが消える）
     };
-    // onScore は常に setSmileScore を渡す（インライン関数にすると毎回カメラが再起動するので注意）
+    // onHappy〜onDisgustedは常に同じ関数を渡す（インライン関数にすると毎回カメラが再起動するので注意）
   }, []);
 
   return (
     <div>
       <video ref={videoRef} autoPlay muted playsInline width={320} height={240} />
-      <p>😊 笑顔 {smile}%</p>
+      {/* <p>😊 笑顔 {smile}%</p>
+      <p>😢 悲しみ {sad}%</p>
+      <p>😠 怒り {angry}%</p>
+      <p>😲 驚き {surprised}%</p>
+      <p>😐 中立 {neutral}%</p>
+      <p>😨 恐怖 {fearful}%</p>
+      <p>🤢 嫌悪 {disgusted}%</p> */}
     </div>
   );
 }

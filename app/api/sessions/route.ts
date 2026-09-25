@@ -33,6 +33,12 @@ export async function POST(request: Request) {
     topic: body.topic,
     answerText: body.answer,
     smileScore: body.smileScore,
+    sadScore: body.sadScore,
+    angryScore: body.angryScore,
+    surprisedScore: body.surprisedScore,
+    neutralScore: body.neutralScore,
+    fearfulScore: body.fearfulScore,
+    disgustedScore: body.disgustedScore,
     feedback: body.feedback,
   });
 
