@@ -194,13 +194,13 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              <tr><th><p>笑顔率😊　</p></th><td><p>{smileScore}%</p></td></tr>
-              <tr><th><p>悲しみ率😢　</p></th><td><p>{sadScore}%</p></td></tr>
-              <tr><th><p>怒り率😠　</p></th><td><p>{angryScore}%</p></td></tr>
-              <tr><th><p>驚き率😲　</p></th><td><p>{surprisedScore}%</p></td></tr>
-              <tr><th><p>中立率😐　</p></th><td><p>{neutralScore}%</p></td></tr>
-              <tr><th><p>恐怖率😨　</p></th><td><p>{fearfulScore}%</p></td></tr>
-              <tr><th><p>嫌悪率🤢　</p></th><td><p>{disgustedScore}%</p></td></tr>
+              <tr><th><p className="text-left">笑顔率😊　</p></th><td><p>{smileScore}%</p></td></tr>
+              <tr><th><p className="text-left">悲しみ率😢　</p></th><td><p>{sadScore}%</p></td></tr>
+              <tr><th><p className="text-left">怒り率😠　</p></th><td><p>{angryScore}%</p></td></tr>
+              <tr><th><p className="text-left">驚き率😲　</p></th><td><p>{surprisedScore}%</p></td></tr>
+              <tr><th><p className="text-left">中立率😐　</p></th><td><p>{neutralScore}%</p></td></tr>
+              <tr><th><p className="text-left">恐怖率😨　</p></th><td><p>{fearfulScore}%</p></td></tr>
+              <tr><th><p className="text-left">嫌悪率🤢　</p></th><td><p>{disgustedScore}%</p></td></tr>
             </tbody>
           </table>
 
