@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 
 type FaceMeterProps = {
+  onScore?: (n: number) => void; // ← 1行追加（拡張前のバックアップ用）
   onHappy?: (n: number) => void;
   onSad?: (n: number) => void;
   onAngry?: (n: number) => void;
