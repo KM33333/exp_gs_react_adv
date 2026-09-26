@@ -12,7 +12,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [smileScore, setSmileScore] = useState(0);
 
-  const [topic, setTopic] = useState("自己紹介"); // ← 課題
+  const [topic, setTopic] = useState("今日の出来事"); // ← 課題
   const [speaking, setSpeaking] = useState(false); // 読み上げ中かどうか
   const [volume, setVolume] = useState(1); // 音量 0〜1
 
@@ -107,7 +107,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: 24, maxWidth: 1280 }}>
-      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>AI練習コーチ</h1>
+      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>エモスコ 〜 表情分析アプリ 〜 </h1>
 
       <div style={{ display: "flex", gap: 32, alignItems: "flex-start", marginTop: 16 }}>
         {/* 左側：操作エリア */}
@@ -127,9 +127,9 @@ export default function Home() {
             onChange={(e) => setTopic(e.target.value)}
             style={{ width: "50%", marginBottom: 12, border: "1px solid gray", margin: 10 }}
           >
-            <option value="自己紹介">自己紹介</option>
-            <option value="志望動機">志望動機</option>
-            <option value="転職理由">転職理由</option>
+            <option value="今日の出来事">今日の出来事</option>
+            <option value="体調">体調</option>
+            {/* <option value="転職理由">転職理由</option> */}
           </select>
 
           <textarea

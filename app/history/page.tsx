@@ -27,7 +27,7 @@ export default async function HistoryPage() {
 
   return (
     <main style={{ padding: 24, maxWidth: 1280 }}>
-      <h1>練習の記録（{rows.length}件）</h1>
+      <h1>過去の記録（{rows.length}件）</h1>
       {rows.length === 0 ? (
         <p>まだありません。練習して「保存」しましょう。</p>
       ) : (
